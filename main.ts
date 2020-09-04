@@ -1,29 +1,11 @@
-let グーチョキパー = 0
-input.onGesture(Gesture.Shake, function () {
-    グーチョキパー = randint(0, 2)
-    if (グーチョキパー == 0) {
-        basic.showLeds(`
-            # # # # #
-            # . . . #
-            # . . . #
-            # . . . #
-            # # # # #
-            `)
-    } else if (グーチョキパー == 1) {
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            . # # # .
-            . # # # .
-            . . . . .
-            `)
+basic.forever(function () {
+    if (input.compassHeading() >= 315 || input.compassHeading() <= 45) {
+        basic.showString("N")
+    } else if (input.compassHeading() > 45 && input.compassHeading() <= 135) {
+        basic.showString("E")
+    } else if (input.compassHeading() > 135 && input.compassHeading() <= 225) {
+        basic.showString("S")
     } else {
-        basic.showLeds(`
-            # # . . #
-            # # . # .
-            . . # . .
-            # # . # .
-            # # . . #
-            `)
+        basic.showString("W")
     }
 })
