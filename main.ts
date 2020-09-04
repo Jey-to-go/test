@@ -1,11 +1,23 @@
-basic.forever(function () {
-    if (input.compassHeading() >= 315 || input.compassHeading() <= 45) {
-        basic.showString("N")
-    } else if (input.compassHeading() > 45 && input.compassHeading() <= 135) {
-        basic.showString("E")
-    } else if (input.compassHeading() > 135 && input.compassHeading() <= 225) {
-        basic.showString("S")
-    } else {
-        basic.showString("W")
+input.onButtonPressed(Button.A, function () {
+    _switch = 0
+    for (let index = 0; index < 100000; index++) {
+        if (_switch == 0) {
+            basic.pause(1)
+            歩数 += 1
+            basic.showNumber(歩数)
+        }
     }
 })
+input.onButtonPressed(Button.AB, function () {
+    歩数 = 0
+    basic.showNumber(歩数)
+})
+input.onButtonPressed(Button.B, function () {
+    _switch = 1
+    basic.showNumber(歩数)
+})
+let _switch = 0
+let 歩数 = 0
+basic.showString("START")
+歩数 = 0
+basic.showNumber(歩数)
